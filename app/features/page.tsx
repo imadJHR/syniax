@@ -16,7 +16,7 @@ export default function FeaturesPage() {
   const { language } = useLanguage()
   const content = translations[language].featuresPage
 
-  // ✅ Motion Variants
+  // ✅ Animation variants (type-safe)
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -28,7 +28,6 @@ export default function FeaturesPage() {
     },
   }
 
-  // ✅ Fixed easing type (TypeScript-safe)
   const itemVariants = {
     hidden: { opacity: 0, y: 30 },
     visible: {
@@ -36,7 +35,7 @@ export default function FeaturesPage() {
       y: 0,
       transition: {
         duration: 0.8,
-        ease: [0.25, 0.46, 0.45, 0.94] as [number, number, number, number],
+        ease: "easeInOut" as const, // ✅ Type-safe easing
       },
     },
   }
@@ -51,12 +50,12 @@ export default function FeaturesPage() {
     y: [0, -20, 0],
     transition: {
       duration: 6,
-      repeat: Number.POSITIVE_INFINITY,
+      repeat: Infinity,
       ease: "easeInOut" as const,
     },
   }
 
-  // ✅ SEO & Content in Two Languages
+  // ✅ SEO + multilingual content
   const seoContent = {
     fr: {
       title: "Fonctionnalités Avancées - Solutions de Sécurité Syniax",
@@ -161,8 +160,6 @@ export default function FeaturesPage() {
         { name: "Blockchain", description: "Technologie blockchain pour l'intégrité des données et audits" },
       ],
     },
-
-    // English Version
     en: {
       title: "Advanced Features - Syniax Security Solutions",
       subtitle: "Discover our cutting-edge technologies for complete and intelligent protection",
@@ -270,7 +267,7 @@ export default function FeaturesPage() {
 
   const t = seoContent[language]
 
-  // ✅ JSX
+  // ✅ Return full UI
   return (
     <main className="relative bg-background text-foreground overflow-hidden">
       <AnimatedBackground />
@@ -312,7 +309,7 @@ export default function FeaturesPage() {
             {t.description}
           </motion.p>
 
-          {/* Stats */}
+          {/* Stats Section */}
           <motion.div variants={itemVariants} className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-12 max-w-2xl mx-auto">
             {t.stats.map((stat, i) => {
               const IconComponent = stat.icon
@@ -333,7 +330,7 @@ export default function FeaturesPage() {
         </motion.div>
       </section>
 
-      {/* Features Grid */}
+      {/* Features Section */}
       <section className="container mx-auto px-4 py-20">
         <motion.div variants={containerVariants} initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} className="max-w-7xl mx-auto">
           <motion.div variants={itemVariants} className="text-center mb-16">
@@ -341,10 +338,13 @@ export default function FeaturesPage() {
               {language === "fr" ? "Nos Fonctionnalités Principales" : "Our Key Features"}
             </h2>
             <p className="text-xl text-foreground/60 max-w-2xl mx-auto">
-              {language === "fr" ? "Des solutions complètes pour tous vos besoins de sécurité" : "Complete solutions for all your security needs"}
+              {language === "fr"
+                ? "Des solutions complètes pour tous vos besoins de sécurité"
+                : "Complete solutions for all your security needs"}
             </p>
           </motion.div>
 
+          {/* Grid */}
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {t.features.map((feature, index) => {
               const IconComponent = feature.icon
@@ -395,7 +395,7 @@ export default function FeaturesPage() {
         </motion.div>
       </section>
 
-      {/* Technologies Section */}
+      {/* Technologies */}
       <section className="container mx-auto px-4 py-20">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -408,7 +408,7 @@ export default function FeaturesPage() {
             <h2 className="text-3xl md:text-4xl font-bold mb-6">
               {language === "fr" ? "Technologies Innovantes" : "Innovative Technologies"}
             </h2>
-                        <p className="text-xl text-foreground/60 max-w-2xl mx-auto">
+            <p className="text-xl text-foreground/60 max-w-2xl mx-auto">
               {language === "fr"
                 ? "Au cœur de nos solutions de sécurité avancées"
                 : "At the heart of our advanced security solutions"}
@@ -435,7 +435,7 @@ export default function FeaturesPage() {
         </motion.div>
       </section>
 
-      {/* Benefits Section */}
+      {/* Benefits */}
       <section className="container mx-auto px-4 py-20">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -445,11 +445,8 @@ export default function FeaturesPage() {
           className="max-w-4xl mx-auto"
         >
           <div className="grid md:grid-cols-2 gap-12 items-center">
-            {/* Left column (text) */}
             <div>
-              <h2 className="text-3xl md:text-4xl font-bold mb-6">
-                {t.benefits.title}
-              </h2>
+              <h2 className="text-3xl md:text-4xl font-bold mb-6">{t.benefits.title}</h2>
               <div className="space-y-4">
                 {t.benefits.items.map((benefit, index) => (
                   <motion.div
@@ -472,7 +469,6 @@ export default function FeaturesPage() {
               </div>
             </div>
 
-            {/* Right column (visual card) */}
             <motion.div
               initial={{ opacity: 0, scale: 0.8 }}
               whileInView={{ opacity: 1, scale: 1 }}
@@ -501,7 +497,7 @@ export default function FeaturesPage() {
                 </div>
               </div>
 
-              {/* Floating Decorative Elements */}
+              {/* Floating Icons */}
               <motion.div
                 className="absolute -top-4 -right-4 w-8 h-8 bg-blue-500/20 rounded-full border border-blue-500/30 flex items-center justify-center"
                 animate={floatingAnimation}
@@ -520,7 +516,7 @@ export default function FeaturesPage() {
         </motion.div>
       </section>
 
-      {/* Call-to-Action Section */}
+      {/* CTA Section */}
       <section className="container mx-auto px-4 py-20">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -529,7 +525,6 @@ export default function FeaturesPage() {
           viewport={{ once: true }}
           className="rounded-2xl bg-gradient-to-r from-red-600/20 to-red-700/20 border border-red-600/30 p-12 text-center relative overflow-hidden"
         >
-          {/* Subtle background bubbles */}
           <div className="absolute inset-0 opacity-10">
             <div className="absolute top-0 left-0 w-32 h-32 bg-red-500 rounded-full -translate-x-1/2 -translate-y-1/2"></div>
             <div className="absolute bottom-0 right-0 w-48 h-48 bg-red-500 rounded-full translate-x-1/2 translate-y-1/2"></div>
@@ -563,9 +558,8 @@ export default function FeaturesPage() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.6 }}
           >
-            {/* Free Demo Button */}
             <motion.button
-              whileHover={{ scale: 1.05, boxShadow: "0 20px 40px rgba(239,68,68,0.3)" }}
+              whileHover={{ scale: 1.05, boxShadow: "0 20px 40px rgba(239, 68, 68, 0.3)" }}
               whileTap={{ scale: 0.95 }}
               className="px-8 py-4 bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white rounded-lg font-semibold transition-all duration-300 flex items-center gap-2"
             >
@@ -575,7 +569,6 @@ export default function FeaturesPage() {
               </Link>
             </motion.button>
 
-            {/* View Services Button */}
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
@@ -594,4 +587,3 @@ export default function FeaturesPage() {
     </main>
   )
 }
-
