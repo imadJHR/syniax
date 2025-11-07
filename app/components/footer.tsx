@@ -142,8 +142,8 @@ export default function Footer() {
     visible: {
       opacity: 1,
       y: 0,
-      transition: { 
-        duration: 0.6, 
+      transition: {
+        duration: 0.6,
         ease: "easeOut",
       },
     },
@@ -195,24 +195,32 @@ export default function Footer() {
           className="grid grid-cols-1 lg:grid-cols-6 gap-8 mb-12"
         >
           {/* Company Info - 2 columns */}
-          <motion.div 
+          <motion.div
             variants={itemVariants}
             className="lg:col-span-2 space-y-6"
           >
             {/* Logo and Company Info */}
-            <motion.div 
+            <motion.div
               className="flex items-center gap-3 mb-4"
               whileHover={{ x: 5 }}
             >
-              <motion.div 
-                className="w-12 h-12 rounded-xl bg-gradient-to-br from-red-600 to-red-700 flex items-center justify-center shadow-lg"
-                whileHover={{ scale: 1.1, rotate: 5 }}
+              <motion.div
+                className="flex items-center justify-center"
+                whileHover={{ scale: 1.1 }}
                 transition={{ type: "spring", stiffness: 300 }}
               >
-                <Shield className="w-6 h-6 text-white" />
+                {/* Fixed image path - make sure your logo is in the public folder */}
+                <Image
+                  src="/logo.png"
+                  alt="SYNIAX Security"
+                  width={100}
+                  height={100}
+                  className="rounded-xl"
+                  priority
+                />
               </motion.div>
               <div>
-                <h3 className="text-2xl font-bold text-foreground">{t.company}</h3>
+                <h3 className="text-2xl  text-red-600 font-bold text-foreground">{t.company}</h3>
                 <p className="text-foreground/60 text-sm">{t.tagline}</p>
               </div>
             </motion.div>
@@ -222,7 +230,7 @@ export default function Footer() {
             </p>
 
             {/* Trust Stats */}
-            <motion.div 
+            <motion.div
               className="grid grid-cols-3 gap-4 pt-4"
               variants={containerVariants}
             >
@@ -276,8 +284,8 @@ export default function Footer() {
             <ul className="space-y-3">
               {Object.entries(t.links).map(([key, link], i) => (
                 <motion.li key={key} whileHover={{ x: 5 }}>
-                  <a 
-                    href={`#${key}`} 
+                  <a
+                    href={`#${key}`}
                     className="flex items-center gap-2 text-foreground/70 hover:text-red-500 transition-colors text-sm group"
                   >
                     <motion.span
@@ -299,8 +307,8 @@ export default function Footer() {
             <ul className="space-y-3">
               {Object.entries(t.services_links).map(([key, service], i) => (
                 <motion.li key={key} whileHover={{ x: 5 }}>
-                  <a 
-                    href={`#${key}`} 
+                  <a
+                    href={`#${key}`}
                     className="flex items-center gap-2 text-foreground/70 hover:text-red-500 transition-colors text-sm group"
                   >
                     <motion.div
@@ -319,13 +327,13 @@ export default function Footer() {
           {/* Contact Info */}
           <motion.div variants={itemVariants} className="space-y-4">
             <h4 className="font-semibold text-foreground mb-4 text-lg">{t.contact}</h4>
-            
-            <motion.a 
+
+            <motion.a
               href={`mailto:${t.contactInfo.email}`}
               className="flex items-center gap-3 text-foreground/70 hover:text-red-500 transition-colors group"
               whileHover={{ x: 5 }}
             >
-              <motion.div 
+              <motion.div
                 className="w-10 h-10 rounded-lg bg-red-500/10 flex items-center justify-center group-hover:bg-red-500/20 transition-colors"
                 whileHover={{ scale: 1.1 }}
               >
@@ -337,12 +345,12 @@ export default function Footer() {
               </div>
             </motion.a>
 
-            <motion.a 
+            <motion.a
               href={`tel:${t.contactInfo.phone.replace(/[^\d+]/g, '')}`}
               className="flex items-center gap-3 text-foreground/70 hover:text-red-500 transition-colors group"
               whileHover={{ x: 5 }}
             >
-              <motion.div 
+              <motion.div
                 className="w-10 h-10 rounded-lg bg-blue-500/10 flex items-center justify-center group-hover:bg-blue-500/20 transition-colors"
                 whileHover={{ scale: 1.1 }}
               >
@@ -354,12 +362,12 @@ export default function Footer() {
               </div>
             </motion.a>
 
-            <motion.a 
+            <motion.a
               href={`tel:${t.contactInfo.emergency.replace(/[^\d+]/g, '')}`}
               className="flex items-center gap-3 text-foreground/70 hover:text-red-500 transition-colors group"
               whileHover={{ x: 5 }}
             >
-              <motion.div 
+              <motion.div
                 className="w-10 h-10 rounded-lg bg-orange-500/10 flex items-center justify-center group-hover:bg-orange-500/20 transition-colors"
                 whileHover={{ scale: 1.1 }}
               >
@@ -371,11 +379,11 @@ export default function Footer() {
               </div>
             </motion.a>
 
-            <motion.div 
+            <motion.div
               className="flex items-center gap-3 text-foreground/70 pt-2"
               whileHover={{ x: 5 }}
             >
-              <motion.div 
+              <motion.div
                 className="w-10 h-10 rounded-lg bg-green-500/10 flex items-center justify-center"
                 whileHover={{ scale: 1.1 }}
               >
@@ -392,8 +400,8 @@ export default function Footer() {
           <motion.div variants={itemVariants} className="lg:col-span-1">
             <h4 className="font-semibold text-foreground mb-4 text-lg">{t.newsletter}</h4>
             <p className="text-foreground/60 text-sm mb-4">{t.newsletterDesc}</p>
-            
-            <motion.form 
+
+            <motion.form
               className="space-y-3"
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
@@ -417,7 +425,7 @@ export default function Footer() {
             </motion.form>
 
             {/* Certifications */}
-            <motion.div 
+            <motion.div
               className="mt-6 pt-6 border-t border-border"
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
@@ -464,7 +472,6 @@ export default function Footer() {
                 </motion.a>
               ))}
             </div>
-
             {/* Copyright */}
             <div className="text-center md:text-right">
               <p className="text-foreground/60 text-sm">

@@ -7,6 +7,7 @@ import LanguageSwitcher from "./language-switcher"
 import { useLanguage } from "./language-context"
 import { translations } from "@/lib/translations"
 import Link from "next/link"
+import Image from "next/image"
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false)
@@ -84,21 +85,21 @@ export default function Header() {
             className="flex items-center gap-3"
           >
             <Link href="/" onClick={closeAllMenus}>
-              <motion.div 
-                className="w-10 h-10 rounded-xl bg-gradient-to-br from-red-600 to-red-700 flex items-center justify-center shadow-lg"
-                whileHover={{ scale: 1.05, rotate: 5 }}
+              <motion.div
+                className="flex items-center justify-center"
+                whileHover={{ scale: 1.05 }}
                 transition={{ type: "spring", stiffness: 300 }}
               >
-                <Shield className="w-5 h-5 text-white" />
+                {/* Replace with your actual image path */}
+                <Image
+                  src="/logo.png" // Update this path to your logo image
+                  alt="SYNIAX Security"
+                  width={100}
+                  height={100}
+                  className="rounded-xl"
+                  priority
+                />
               </motion.div>
-            </Link>
-            <Link href="/" onClick={closeAllMenus}>
-              <motion.span 
-                className="text-2xl font-bold bg-gradient-to-r from-red-500 to-red-600 bg-clip-text text-transparent"
-                whileHover={{ scale: 1.02 }}
-              >
-                SYNIAX
-              </motion.span>
             </Link>
           </motion.div>
 
@@ -109,8 +110,8 @@ export default function Header() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.1 }}
             >
-              <Link 
-                href="/" 
+              <Link
+                href="/"
                 className="text-sm font-medium text-foreground/80 hover:text-red-600 transition-colors duration-300 px-3 py-2 rounded-lg hover:bg-red-50 dark:hover:bg-red-950/20"
               >
                 {t.home}
@@ -188,8 +189,8 @@ export default function Header() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3 }}
             >
-              <Link 
-                href="/features" 
+              <Link
+                href="/features"
                 className="text-sm font-medium text-foreground/80 hover:text-red-600 transition-colors duration-300 px-3 py-2 rounded-lg hover:bg-red-50 dark:hover:bg-red-950/20"
               >
                 {t.features}
@@ -201,8 +202,8 @@ export default function Header() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4 }}
             >
-              <Link 
-                href="/contact" 
+              <Link
+                href="/contact"
                 className="text-sm font-medium text-foreground/80 hover:text-red-600 transition-colors duration-300 px-3 py-2 rounded-lg hover:bg-red-50 dark:hover:bg-red-950/20"
               >
                 {t.contact}
