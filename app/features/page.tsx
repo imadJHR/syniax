@@ -14,10 +14,8 @@ import {
 
 export default function FeaturesPage() {
   const { language } = useLanguage()
-  // Note: Using 'content' from translations[language] directly might be simpler
-  // const content = translations[language].featuresPage 
 
-  // Animation variants
+  // Animation variants with proper TypeScript types
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -36,7 +34,7 @@ export default function FeaturesPage() {
       y: 0,
       transition: {
         duration: 0.8,
-        ease: "easeInOut" as const, // This is correct and type-safe
+        ease: [0.25, 0.46, 0.45, 0.94], // easeInOut equivalent
       },
     },
   }
@@ -52,12 +50,11 @@ export default function FeaturesPage() {
     transition: {
       duration: 6,
       repeat: Infinity,
-      ease: "easeInOut" as const, // This is also correct
+      ease: [0.25, 0.46, 0.45, 0.94],
     },
   }
 
   // SEO + multilingual content
-  // This structure is great for organizing content
   const seoContent = {
     fr: {
       title: "Fonctionnalités Avancées - Solutions de Sécurité Syniax",
@@ -288,7 +285,12 @@ export default function FeaturesPage() {
 
       {/* Hero Section */}
       <section className="min-h-[60vh] flex items-center justify-center container mx-auto px-4 py-20">
-        <motion.div variants={containerVariants} initial="hidden" animate="visible" className="max-w-4xl text-center">
+        <motion.div 
+          initial="hidden"
+          animate="visible"
+          variants={containerVariants} 
+          className="max-w-4xl text-center"
+        >
           <motion.div variants={itemVariants} className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-red-500/10 border border-red-500/20 mb-6">
             <Zap className="w-4 h-4 text-red-500" />
             <span className="text-sm text-red-600 dark:text-red-400">
@@ -333,7 +335,13 @@ export default function FeaturesPage() {
 
       {/* Features Section */}
       <section className="container mx-auto px-4 py-20">
-        <motion.div variants={containerVariants} initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} className="max-w-7xl mx-auto">
+        <motion.div 
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }} 
+          variants={containerVariants}
+          className="max-w-7xl mx-auto"
+        >
           <motion.div variants={itemVariants} className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold mb-6">
               {language === "fr" ? "Nos Fonctionnalités Principales" : "Our Key Features"}
@@ -429,7 +437,7 @@ export default function FeaturesPage() {
                 <h3 className="text-xl font-semibold mb-3 text-foreground group-hover:text-red-600 dark:group-hover:text-red-400 transition-colors">
                   {tech.name}
                 </h3>
-                s <p className="text-foreground/60">{tech.description}</p>
+                <p className="text-foreground/60">{tech.description}</p>
               </motion.div>
             ))}
           </div>
@@ -492,7 +500,6 @@ export default function FeaturesPage() {
                     className="inline-flex items-center gap-2 text-red-600 dark:text-red-400 font-semibold cursor-pointer group"
                     whileHover={{ x: 5 }}
                   >
-                    _EOD_
                     {language === "fr" ? "En savoir plus" : "Learn more"}
                     <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                   </motion.div>
