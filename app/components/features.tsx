@@ -192,6 +192,7 @@ export default function Features() {
 
   const t = translations[language]
 
+  // Fixed variants with proper TypeScript typing
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -210,7 +211,7 @@ export default function Features() {
       y: 0,
       transition: { 
         duration: 0.8, 
-        ease: [0.25, 0.46, 0.45, 0.94],
+        ease: "easeOut" as const, // Fixed: Use string literal instead of array
       },
     },
   }
@@ -225,7 +226,7 @@ export default function Features() {
     y: [0, -15, 0],
     transition: {
       duration: 4,
-      repeat: Number.POSITIVE_INFINITY,
+      repeat: Infinity,
       ease: "easeInOut"
     }
   }
@@ -234,7 +235,7 @@ export default function Features() {
     scale: [1, 1.05, 1],
     transition: {
       duration: 2,
-      repeat: Number.POSITIVE_INFINITY,
+      repeat: Infinity,
       ease: "easeInOut"
     }
   }
@@ -251,7 +252,7 @@ export default function Features() {
           }}
           transition={{
             duration: 8,
-            repeat: Number.POSITIVE_INFINITY,
+            repeat: Infinity,
             ease: "easeInOut"
           }}
         />
@@ -263,7 +264,7 @@ export default function Features() {
           }}
           transition={{
             duration: 6,
-            repeat: Number.POSITIVE_INFINITY,
+            repeat: Infinity,
             ease: "easeInOut"
           }}
         />
@@ -410,7 +411,7 @@ export default function Features() {
                 >
                   <motion.div
                     animate={{ scale: [1, 1.2, 1] }}
-                    transition={{ duration: 2, repeat: Number.POSITIVE_INFINITY }}
+                    transition={{ duration: 2, repeat: Infinity }}
                   >
                     <CheckCircle2 className="w-4 h-4" />
                   </motion.div>
