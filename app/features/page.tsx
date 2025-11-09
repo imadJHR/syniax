@@ -1,5 +1,5 @@
 "use client"
-import { motion } from "framer-motion"
+
 import Link from "next/link"
 import Header from "@/app/components/header"
 import Footer from "@/app/components/footer"
@@ -10,48 +10,15 @@ import {
   ArrowLeft, Shield, Zap, Camera, Lock, Smartphone, Users,
   Eye, CheckCircle, Award, Clock, Wifi, Star, ArrowRight
 } from "lucide-react"
+import { useEffect, useState } from "react"
 
 export default function FeaturesPage() {
   const { language } = useLanguage()
+  const [isVisible, setIsVisible] = useState(false)
 
-  // Animation variants with proper TypeScript types
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.15,
-        delayChildren: 0.2,
-      },
-    },
-  }
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 30 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.8,
-        ease: "easeInOut",
-      },
-    },
-  }
-
-  const cardHover = {
-    y: -10,
-    scale: 1.02,
-    transition: { type: "spring", stiffness: 300 },
-  }
-
-  const floatingAnimation = {
-    y: [0, -20, 0],
-    transition: {
-      duration: 6,
-      repeat: Infinity,
-      ease: "easeInOut",
-    },
-  }
+  useEffect(() => {
+    setIsVisible(true)
+  }, [])
 
   // SEO + multilingual content
   const seoContent = {
@@ -269,107 +236,68 @@ export default function FeaturesPage() {
     <main className="relative bg-background text-foreground overflow-hidden">
       <AnimatedBackground />
       <Header />
+
       {/* Back Button */}
       <div className="pt-24 container mx-auto px-4">
-        <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.2 }}>
+        <div className={`transition-all duration-500 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-5'}`}>
           <Link href="/" className="flex items-center gap-2 text-foreground/60 hover:text-foreground transition-colors group">
-            <motion.div whileHover={{ x: -5 }} transition={{ type: "spring", stiffness: 400 }}>
+            <div className="group-hover:-translate-x-1 transition-transform">
               <ArrowLeft size={20} />
-            </motion.div>
+            </div>
             {language === "fr" ? "Retour à l'accueil" : "Back to home"}
           </Link>
-        </motion.div>
+        </div>
       </div>
 
       {/* Hero Section */}
       <section className="min-h-[60vh] flex items-center justify-center container mx-auto px-4 py-20">
-        <motion.div
-          initial="hidden"
-          animate="visible"
-          variants={containerVariants}
-          className="max-w-4xl text-center"
-        >
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-red-500/10 border border-red-500/20 mb-6"
-          >
+        <div className="max-w-4xl text-center">
+          <div className={`inline-flex items-center gap-2 px-4 py-2 rounded-full bg-red-500/10 border border-red-500/20 mb-6 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
             <Zap className="w-4 h-4 text-red-500" />
             <span className="text-sm text-red-600 dark:text-red-400">
               {language === "fr" ? "Technologies Avancées" : "Advanced Technologies"}
             </span>
-          </motion.div>
-          <motion.h1
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-4xl md:text-6xl font-bold mb-6 leading-tight"
-          >
+          </div>
+
+          <h1 className={`text-4xl md:text-6xl font-bold mb-6 leading-tight transition-all duration-700 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
             <span className="bg-gradient-to-r from-foreground via-foreground to-red-600 dark:from-white dark:via-white dark:to-red-400 bg-clip-text text-transparent">
               {t.title}
             </span>
-          </motion.h1>
-          <motion.p
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-            className="text-xl text-foreground/70 mb-8 max-w-2xl mx-auto leading-relaxed"
-          >
+          </h1>
+
+          <p className={`text-xl text-foreground/70 mb-8 max-w-2xl mx-auto leading-relaxed transition-all duration-700 delay-300 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
             {t.subtitle}
-          </motion.p>
-          <motion.p
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.6 }}
-            className="text-lg text-foreground/60 max-w-3xl mx-auto leading-relaxed"
-          >
+          </p>
+
+          <p className={`text-lg text-foreground/60 max-w-3xl mx-auto leading-relaxed transition-all duration-700 delay-400 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
             {t.description}
-          </motion.p>
+          </p>
 
           {/* Stats Section */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.8 }}
-            className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-12 max-w-2xl mx-auto"
-          >
+          <div className={`grid grid-cols-2 md:grid-cols-4 gap-6 mt-12 max-w-2xl mx-auto transition-all duration-700 delay-500 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
             {t.stats.map((stat, i) => {
               const IconComponent = stat.icon
               return (
-                <motion.div
+                <div 
                   key={i}
-                  initial={{ opacity: 0, y: 30 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.8, delay: 1 + i * 0.1 }}
-                  whileHover={{ scale: 1.05, y: -5 }}
-                  className="text-center p-4"
+                  className="text-center p-4 transition-all duration-300 hover:scale-105 hover:-translate-y-1"
                 >
-                  <motion.div
-                    className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-red-100 dark:bg-red-600/10 mb-3"
-                    whileHover={{ scale: 1.1, rotate: 5 }}
-                  >
+                  <div className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-red-100 dark:bg-red-600/10 mb-3 transition-all duration-300 hover:scale-110 hover:rotate-6">
                     <IconComponent className="w-6 h-6 text-red-600 dark:text-red-500" />
-                  </motion.div>
+                  </div>
                   <div className="text-2xl font-bold text-red-500 mb-1">{stat.value}</div>
                   <div className="text-sm text-foreground/60">{stat.label}</div>
-                </motion.div>
+                </div>
               )
             })}
-          </motion.div>
-        </motion.div>
+          </div>
+        </div>
       </section>
 
       {/* Features Section */}
       <section className="container mx-auto px-4 py-20">
         <div className="max-w-7xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-            className="text-center mb-16"
-          >
+          <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold mb-6">
               {language === "fr" ? "Nos Fonctionnalités Principales" : "Our Key Features"}
             </h2>
@@ -378,57 +306,47 @@ export default function FeaturesPage() {
                 ? "Des solutions complètes pour tous vos besoins de sécurité"
                 : "Complete solutions for all your security needs"}
             </p>
-          </motion.div>
+          </div>
 
           {/* Grid */}
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {t.features.map((feature, index) => {
               const IconComponent = feature.icon
               return (
-                <motion.div
+                <div
                   key={index}
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.8, delay: index * 0.1 }}
-                  whileHover={cardHover}
-                  className="group p-8 rounded-2xl bg-card/50 backdrop-blur-sm border border-border hover:border-red-600/30 transition-all duration-500 hover:shadow-2xl hover:shadow-red-500/10"
+                  className="group p-8 rounded-2xl bg-card/50 backdrop-blur-sm border border-border hover:border-red-600/30 transition-all duration-500 hover:shadow-2xl hover:shadow-red-500/10 hover:-translate-y-2 hover:scale-102"
                 >
-                  <motion.div className="flex items-start justify-between mb-4" whileHover={{ x: 5 }}>
-                    <motion.div
-                      className="p-3 rounded-xl bg-red-100 dark:bg-red-600/10 group-hover:bg-red-200 dark:group-hover:bg-red-600/20 transition-colors"
-                      whileHover={{ scale: 1.1, rotate: 5 }}
+                  <div className="flex items-start justify-between mb-4 group-hover:translate-x-1 transition-transform">
+                    <div 
+                      className="p-3 rounded-xl bg-red-100 dark:bg-red-600/10 group-hover:bg-red-200 dark:group-hover:bg-red-600/20 transition-colors group-hover:scale-110 group-hover:rotate-6 duration-300" 
                     >
                       <IconComponent className="w-6 h-6 text-red-600 dark:text-red-500" />
-                    </motion.div>
-                    <motion.div
-                      className="px-3 py-1 rounded-full bg-green-100 dark:bg-green-600/10 border border-green-500/20"
-                      initial={{ scale: 0 }}
-                      whileInView={{ scale: 1 }}
-                      transition={{ delay: index * 0.1 + 0.5 }}
+                    </div>
+                    <div
+                      className="px-3 py-1 rounded-full bg-green-100 dark:bg-green-600/10 border border-green-500/20 scale-100 transition-transform"
                     >
                       <span className="text-sm font-bold text-green-600 dark:text-green-400">{feature.stats}</span>
-                    </motion.div>
-                  </motion.div>
+                    </div>
+                  </div>
+
                   <h3 className="text-xl font-bold mb-3 text-foreground group-hover:text-red-600 dark:group-hover:text-red-400 transition-colors">
                     {feature.title}
                   </h3>
                   <p className="text-foreground/60 mb-4 leading-relaxed">{feature.description}</p>
+
                   <div className="space-y-2">
                     {feature.benefits.map((benefit, i) => (
-                      <motion.div
+                      <div
                         key={i}
-                        className="flex items-center gap-2 text-sm text-foreground/70"
-                        initial={{ opacity: 0, x: -10 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        transition={{ delay: index * 0.1 + i * 0.1 + 0.3 }}
+                        className="flex items-center gap-2 text-sm text-foreground/70 transition-all duration-300 opacity-100 translate-x-0"
                       >
                         <CheckCircle className="w-4 h-4 text-green-500 flex-shrink-0" />
                         <span>{benefit}</span>
-                      </motion.div>
+                      </div>
                     ))}
                   </div>
-                </motion.div>
+                </div>
               )
             })}
           </div>
@@ -437,13 +355,7 @@ export default function FeaturesPage() {
 
       {/* Technologies */}
       <section className="container mx-auto px-4 py-20">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-          className="max-w-6xl mx-auto"
-        >
+        <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold mb-6">
               {language === "fr" ? "Technologies Innovantes" : "Innovative Technologies"}
@@ -454,66 +366,47 @@ export default function FeaturesPage() {
                 : "At the heart of our advanced security solutions"}
             </p>
           </div>
+
           <div className="grid md:grid-cols-2 gap-8">
             {t.technologies.map((tech, index) => (
-              <motion.div
+              <div
                 key={index}
-                initial={{ opacity: 0, x: index % 2 === 0 ? -20 : 20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.8, delay: index * 0.2 }}
-                className="p-6 rounded-2xl bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-900 border border-border hover:border-red-600/30 transition-all duration-300 group"
+                className="p-6 rounded-2xl bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-900 border border-border hover:border-red-600/30 transition-all duration-300 group opacity-100 translate-x-0"
               >
                 <h3 className="text-xl font-semibold mb-3 text-foreground group-hover:text-red-600 dark:group-hover:text-red-400 transition-colors">
                   {tech.name}
                 </h3>
                 <p className="text-foreground/60">{tech.description}</p>
-              </motion.div>
+              </div>
             ))}
           </div>
-        </motion.div>
+        </div>
       </section>
 
       {/* Benefits */}
       <section className="container mx-auto px-4 py-20">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-          className="max-w-4xl mx-auto"
-        >
+        <div className="max-w-4xl mx-auto">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
               <h2 className="text-3xl md:text-4xl font-bold mb-6">{t.benefits.title}</h2>
               <div className="space-y-4">
                 {t.benefits.items.map((benefit, index) => (
-                  <motion.div
+                  <div
                     key={index}
-                    initial={{ opacity: 0, x: -20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.8, delay: index * 0.1 }}
-                    className="flex items-center gap-4 p-4 rounded-xl bg-card/50 backdrop-blur-sm border border-border hover:border-red-600/30 transition-all duration-300 group"
+                    className="flex items-center gap-4 p-4 rounded-xl bg-card/50 backdrop-blur-sm border border-border hover:border-red-600/30 transition-all duration-300 group opacity-100 translate-x-0"
                   >
-                    <motion.div
-                      className="flex-shrink-0 w-8 h-8 rounded-full bg-red-100 dark:bg-red-600/10 flex items-center justify-center group-hover:bg-red-200 dark:group-hover:bg-red-600/20 transition-colors"
-                      whileHover={{ scale: 1.1 }}
+                    <div
+                      className="flex-shrink-0 w-8 h-8 rounded-full bg-red-100 dark:bg-red-600/10 flex items-center justify-center group-hover:bg-red-200 dark:group-hover:bg-red-600/20 transition-colors group-hover:scale-110"
                     >
                       <CheckCircle className="w-4 h-4 text-red-600 dark:text-red-500" />
-                    </motion.div>
+                    </div>
                     <span className="text-foreground/80 font-medium">{benefit}</span>
-                  </motion.div>
+                  </div>
                 ))}
               </div>
             </div>
-            <motion.div
-              initial={{ opacity: 0, scale: 0.8 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8, delay: 0.3 }}
-              className="relative"
-            >
+
+            <div className="relative opacity-100 scale-100">
               <div className="bg-gradient-to-br from-red-500/10 to-red-600/10 rounded-2xl p-8 border border-red-500/20">
                 <div className="text-center">
                   <Shield className="w-16 h-16 text-red-500 mx-auto mb-4" />
@@ -525,100 +418,78 @@ export default function FeaturesPage() {
                       ? "Protection 360° avec les dernières technologies"
                       : "360° protection with the latest technologies"}
                   </p>
-                  <motion.div
+                  <div
                     className="inline-flex items-center gap-2 text-red-600 dark:text-red-400 font-semibold cursor-pointer group"
-                    whileHover={{ x: 5 }}
                   >
-                    <Link href="/services">
-                      {language === "fr" ? "En savoir plus" : "Learn more"}
-                    </Link>
+                    {language === "fr" ? "En savoir plus" : "Learn more"}
                     <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                  </motion.div>
+                  </div>
                 </div>
               </div>
+
               {/* Floating Icons */}
-              <motion.div
-                className="absolute -top-4 -right-4 w-8 h-8 bg-blue-500/20 rounded-full border border-blue-500/30 flex items-center justify-center"
-                animate={floatingAnimation}
-              >
+              <div className="absolute -top-4 -right-4 w-8 h-8 bg-blue-500/20 rounded-full border border-blue-500/30 flex items-center justify-center animate-float">
                 <Zap className="w-4 h-4 text-blue-400" />
-              </motion.div>
-              <motion.div
-                className="absolute -bottom-4 -left-4 w-6 h-6 bg-green-500/20 rounded-full border border-green-500/30 flex items-center justify-center"
-                animate={floatingAnimation}
-                transition={{ delay: 2 }}
-              >
+              </div>
+              <div className="absolute -bottom-4 -left-4 w-6 h-6 bg-green-500/20 rounded-full border border-green-500/30 flex items-center justify-center animate-float-delayed">
                 <CheckCircle className="w-3 h-3 text-green-400" />
-              </motion.div>
-            </motion.div>
+              </div>
+            </div>
           </div>
-        </motion.div>
+        </div>
       </section>
 
       {/* CTA Section */}
       <section className="container mx-auto px-4 py-20">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-          className="rounded-2xl bg-gradient-to-r from-red-600/20 to-red-700/20 border border-red-600/30 p-12 text-center relative overflow-hidden"
-        >
+        <div className="rounded-2xl bg-gradient-to-r from-red-600/20 to-red-700/20 border border-red-600/30 p-12 text-center relative overflow-hidden opacity-100 translate-y-0">
           <div className="absolute inset-0 opacity-10">
             <div className="absolute top-0 left-0 w-32 h-32 bg-red-500 rounded-full -translate-x-1/2 -translate-y-1/2"></div>
             <div className="absolute bottom-0 right-0 w-48 h-48 bg-red-500 rounded-full translate-x-1/2 translate-y-1/2"></div>
           </div>
-          <motion.h2
-            className="text-3xl md:text-4xl font-bold mb-4 relative z-10"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2 }}
-          >
+
+          <h2 className="text-3xl md:text-4xl font-bold mb-4 relative z-10">
             {language === "fr"
               ? "Prêt à renforcer votre sécurité ?"
               : "Ready to enhance your security?"}
-          </motion.h2>
-          <motion.p
-            className="text-foreground/70 mb-8 max-w-2xl mx-auto text-lg relative z-10"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.4 }}
-          >
+          </h2>
+
+          <p className="text-foreground/70 mb-8 max-w-2xl mx-auto text-lg relative z-10">
             {language === "fr"
               ? "Découvrez comment nos fonctionnalités avancées peuvent transformer votre approche de la sécurité. Consultation gratuite et démonstration sur mesure."
               : "Discover how our advanced features can transform your security approach. Free consultation and personalized demonstration."}
-          </motion.p>
-          <motion.div
-            className="flex flex-col sm:flex-row gap-4 justify-center items-center relative z-10"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.6 }}
-          >
-            <motion.button
-              whileHover={{ scale: 1.05, boxShadow: "0 20px 40px rgba(239, 68, 68, 0.3)" }}
-              whileTap={{ scale: 0.95 }}
-              className="px-8 py-4 bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white rounded-lg font-semibold transition-all duration-300 flex items-center gap-2"
-            >
+          </p>
+
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center relative z-10">
+            <button className="px-8 py-4 bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white rounded-lg font-semibold transition-all duration-300 flex items-center gap-2 hover:scale-105 hover:shadow-2xl hover:shadow-red-500/30 active:scale-95">
               <Shield className="w-5 h-5" />
               <Link href="/contact">
                 {language === "fr" ? "Démo Gratuite" : "Free Demo"}
               </Link>
-            </motion.button>
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="px-8 py-4 bg-white/10 hover:bg-white/20 text-foreground rounded-lg font-semibold border border-foreground/20 transition-all duration-300 flex items-center gap-2"
-            >
+            </button>
+
+            <button className="px-8 py-4 bg-white/10 hover:bg-white/20 text-foreground rounded-lg font-semibold border border-foreground/20 transition-all duration-300 flex items-center gap-2 hover:scale-105 active:scale-95">
               <Eye className="w-5 h-5" />
               <Link href="/services">
                 {language === "fr" ? "Voir nos Services" : "View Services"}
               </Link>
-            </motion.button>
-          </motion.div>
-        </motion.div>
+            </button>
+          </div>
+        </div>
       </section>
-
       <Footer />
+
+      <style jsx>{`
+        @keyframes float {
+          0%, 100% { transform: translateY(0px); }
+          50% { transform: translateY(-20px); }
+        }
+        .animate-float {
+          animation: float 6s ease-in-out infinite;
+        }
+        .animate-float-delayed {
+          animation: float 6s ease-in-out 2s infinite;
+        }
+      `}</style>
     </main>
   )
 }
