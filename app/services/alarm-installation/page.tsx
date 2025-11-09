@@ -32,7 +32,7 @@ export default function AlarmInstallationPage() {
       y: 0,
       transition: { 
         duration: 0.8, 
-        ease: [0.25, 0.46, 0.45, 0.94] as const, // Add 'as const' to fix the type
+        ease: [0.25, 0.46, 0.45, 0.94] as const,
       },
     },
   }
@@ -48,7 +48,7 @@ export default function AlarmInstallationPage() {
     transition: {
       duration: 6,
       repeat: Number.POSITIVE_INFINITY,
-      ease: "easeInOut"
+      ease: "easeInOut" as const
     }
   }
 
