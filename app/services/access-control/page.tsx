@@ -8,11 +8,9 @@ import Header from "@/app/components/header"
 import Footer from "@/app/components/footer"
 import AnimatedBackground from "@/app/components/animated-background"
 import { useLanguage } from "@/app/components/language-context"
-import { translations } from "@/lib/translations"
 
 export default function AccessControlPage() {
   const { language } = useLanguage()
-  const content = translations[language].servicePages.access
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -32,7 +30,7 @@ export default function AccessControlPage() {
       y: 0,
       transition: { 
         duration: 0.8, 
-        ease: [0.25, 0.46, 0.45, 0.94],
+        ease: "easeOut" as const,
       },
     },
   }
@@ -40,15 +38,15 @@ export default function AccessControlPage() {
   const cardHover = {
     y: -10,
     scale: 1.02,
-    transition: { type: "spring", stiffness: 300 }
+    transition: { type: "spring" as const, stiffness: 300 }
   }
 
   const floatingAnimation = {
     y: [0, -20, 0],
     transition: {
       duration: 6,
-      repeat: Number.POSITIVE_INFINITY,
-      ease: "easeInOut"
+      repeat: Infinity,
+      ease: "easeInOut" as const
     }
   }
 
@@ -353,7 +351,7 @@ export default function AccessControlPage() {
               className="flex flex-col sm:flex-row gap-4 pt-6"
             >
               <motion.button
-                whileHover={{ scale: 1.05, boxShadow: "0 20px 40px rgba(239, 68, 68, 0.3)" }}
+                whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 className="px-8 py-4 bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white rounded-lg font-semibold transition-all duration-300 flex items-center gap-2"
               >
@@ -376,7 +374,7 @@ export default function AccessControlPage() {
           <motion.div
             initial={{ opacity: 0, x: 50, scale: 0.9 }}
             animate={{ opacity: 1, x: 0, scale: 1 }}
-            transition={{ duration: 1, ease: "easeOut" }}
+            transition={{ duration: 1, ease: "easeOut" as const }}
             className="relative"
           >
             <div className="relative rounded-2xl overflow-hidden shadow-2xl">
@@ -421,7 +419,7 @@ export default function AccessControlPage() {
                           className="w-8 h-8 rounded-full bg-gradient-to-r from-blue-500 to-purple-500 flex items-center justify-center text-white text-xs font-bold"
                           whileHover={{ scale: 1.2, y: -5 }}
                           animate={{ y: [0, -5, 0] }}
-                          transition={{ duration: 3, repeat: Number.POSITIVE_INFINITY, delay: i * 0.5 }}
+                          transition={{ duration: 3, repeat: Infinity, delay: i * 0.5 }}
                         >
                           {i + 1}
                         </motion.div>
@@ -460,7 +458,7 @@ export default function AccessControlPage() {
                   }}
                   transition={{
                     duration: 4,
-                    repeat: Number.POSITIVE_INFINITY,
+                    repeat: Infinity,
                     delay: 1,
                   }}
                 >
@@ -725,7 +723,7 @@ export default function AccessControlPage() {
             transition={{ delay: 0.6 }}
           >
             <motion.button
-              whileHover={{ scale: 1.05, boxShadow: "0 20px 40px rgba(239, 68, 68, 0.3)" }}
+              whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               className="px-8 py-4 bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white rounded-lg font-semibold transition-all duration-300 flex items-center gap-2"
             >
