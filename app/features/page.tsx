@@ -396,7 +396,7 @@ export default function FeaturesPage() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.8, delay: index * 0.1 }}
-                  whileHover={cardHover}
+               
                   className="group p-8 rounded-2xl bg-card/50 backdrop-blur-sm border border-border hover:border-red-600/30 transition-all duration-500 hover:shadow-2xl hover:shadow-red-500/10"
                 >
                   <motion.div className="flex items-start justify-between mb-4" whileHover={{ x: 5 }}>
@@ -547,13 +547,13 @@ export default function FeaturesPage() {
               {/* Floating Icons */}
               <motion.div
                 className="absolute -top-4 -right-4 w-8 h-8 bg-blue-500/20 rounded-full border border-blue-500/30 flex items-center justify-center"
-                animate={floatingAnimation}
+               
               >
                 <Zap className="w-4 h-4 text-blue-400" />
               </motion.div>
               <motion.div
                 className="absolute -bottom-4 -left-4 w-6 h-6 bg-green-500/20 rounded-full border border-green-500/30 flex items-center justify-center"
-                animate={floatingAnimation}
+               
                 transition={{ delay: 2 }}
               >
                 <CheckCircle className="w-3 h-3 text-green-400" />
