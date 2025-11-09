@@ -40,7 +40,7 @@ export default function AlarmInstallationPage() {
   const cardHover = {
     y: -10,
     scale: 1.02,
-    transition: { type: "spring", stiffness: 300 }
+    transition: { type: "spring" as const, stiffness: 300 }
   }
 
   const floatingAnimation = {
@@ -178,7 +178,7 @@ export default function AlarmInstallationPage() {
           >
             <motion.div
               whileHover={{ x: -5 }}
-              transition={{ type: "spring", stiffness: 400 }}
+              transition={{ type: "spring" as const, stiffness: 400 }}
             >
               <ArrowLeft size={20} />
             </motion.div>
