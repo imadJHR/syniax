@@ -1,5 +1,4 @@
 "use client"
-
 import { motion } from "framer-motion"
 import Link from "next/link"
 import Header from "@/app/components/header"
@@ -270,7 +269,6 @@ export default function FeaturesPage() {
     <main className="relative bg-background text-foreground overflow-hidden">
       <AnimatedBackground />
       <Header />
-
       {/* Back Button */}
       <div className="pt-24 container mx-auto px-4">
         <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.2 }}>
@@ -285,13 +283,13 @@ export default function FeaturesPage() {
 
       {/* Hero Section */}
       <section className="min-h-[60vh] flex items-center justify-center container mx-auto px-4 py-20">
-        <motion.div 
+        <motion.div
           initial="hidden"
           animate="visible"
-          variants={containerVariants} 
+          variants={containerVariants}
           className="max-w-4xl text-center"
         >
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
@@ -302,8 +300,7 @@ export default function FeaturesPage() {
               {language === "fr" ? "Technologies Avancées" : "Advanced Technologies"}
             </span>
           </motion.div>
-
-          <motion.h1 
+          <motion.h1
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
@@ -313,8 +310,7 @@ export default function FeaturesPage() {
               {t.title}
             </span>
           </motion.h1>
-
-          <motion.p 
+          <motion.p
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
@@ -322,8 +318,7 @@ export default function FeaturesPage() {
           >
             {t.subtitle}
           </motion.p>
-
-          <motion.p 
+          <motion.p
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.6 }}
@@ -333,7 +328,7 @@ export default function FeaturesPage() {
           </motion.p>
 
           {/* Stats Section */}
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.8 }}
@@ -342,7 +337,7 @@ export default function FeaturesPage() {
             {t.stats.map((stat, i) => {
               const IconComponent = stat.icon
               return (
-                <motion.div 
+                <motion.div
                   key={i}
                   initial={{ opacity: 0, y: 30 }}
                   animate={{ opacity: 1, y: 0 }}
@@ -368,7 +363,7 @@ export default function FeaturesPage() {
       {/* Features Section */}
       <section className="container mx-auto px-4 py-20">
         <div className="max-w-7xl mx-auto">
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -400,8 +395,8 @@ export default function FeaturesPage() {
                   className="group p-8 rounded-2xl bg-card/50 backdrop-blur-sm border border-border hover:border-red-600/30 transition-all duration-500 hover:shadow-2xl hover:shadow-red-500/10"
                 >
                   <motion.div className="flex items-start justify-between mb-4" whileHover={{ x: 5 }}>
-                    <motion.div 
-                      className="p-3 rounded-xl bg-red-100 dark:bg-red-600/10 group-hover:bg-red-200 dark:group-hover:bg-red-600/20 transition-colors" 
+                    <motion.div
+                      className="p-3 rounded-xl bg-red-100 dark:bg-red-600/10 group-hover:bg-red-200 dark:group-hover:bg-red-600/20 transition-colors"
                       whileHover={{ scale: 1.1, rotate: 5 }}
                     >
                       <IconComponent className="w-6 h-6 text-red-600 dark:text-red-500" />
@@ -415,12 +410,10 @@ export default function FeaturesPage() {
                       <span className="text-sm font-bold text-green-600 dark:text-green-400">{feature.stats}</span>
                     </motion.div>
                   </motion.div>
-
                   <h3 className="text-xl font-bold mb-3 text-foreground group-hover:text-red-600 dark:group-hover:text-red-400 transition-colors">
                     {feature.title}
                   </h3>
                   <p className="text-foreground/60 mb-4 leading-relaxed">{feature.description}</p>
-
                   <div className="space-y-2">
                     {feature.benefits.map((benefit, i) => (
                       <motion.div
@@ -461,7 +454,6 @@ export default function FeaturesPage() {
                 : "At the heart of our advanced security solutions"}
             </p>
           </div>
-
           <div className="grid md:grid-cols-2 gap-8">
             {t.technologies.map((tech, index) => (
               <motion.div
@@ -515,7 +507,6 @@ export default function FeaturesPage() {
                 ))}
               </div>
             </div>
-
             <motion.div
               initial={{ opacity: 0, scale: 0.8 }}
               whileInView={{ opacity: 1, scale: 1 }}
@@ -545,7 +536,6 @@ export default function FeaturesPage() {
                   </motion.div>
                 </div>
               </div>
-
               {/* Floating Icons */}
               <motion.div
                 className="absolute -top-4 -right-4 w-8 h-8 bg-blue-500/20 rounded-full border border-blue-500/30 flex items-center justify-center"
@@ -578,7 +568,6 @@ export default function FeaturesPage() {
             <div className="absolute top-0 left-0 w-32 h-32 bg-red-500 rounded-full -translate-x-1/2 -translate-y-1/2"></div>
             <div className="absolute bottom-0 right-0 w-48 h-48 bg-red-500 rounded-full translate-x-1/2 translate-y-1/2"></div>
           </div>
-
           <motion.h2
             className="text-3xl md:text-4xl font-bold mb-4 relative z-10"
             initial={{ opacity: 0, y: 20 }}
@@ -589,7 +578,6 @@ export default function FeaturesPage() {
               ? "Prêt à renforcer votre sécurité ?"
               : "Ready to enhance your security?"}
           </motion.h2>
-
           <motion.p
             className="text-foreground/70 mb-8 max-w-2xl mx-auto text-lg relative z-10"
             initial={{ opacity: 0, y: 20 }}
@@ -600,7 +588,6 @@ export default function FeaturesPage() {
               ? "Découvrez comment nos fonctionnalités avancées peuvent transformer votre approche de la sécurité. Consultation gratuite et démonstration sur mesure."
               : "Discover how our advanced features can transform your security approach. Free consultation and personalized demonstration."}
           </motion.p>
-
           <motion.div
             className="flex flex-col sm:flex-row gap-4 justify-center items-center relative z-10"
             initial={{ opacity: 0, y: 20 }}
@@ -617,7 +604,6 @@ export default function FeaturesPage() {
                 {language === "fr" ? "Démo Gratuite" : "Free Demo"}
               </Link>
             </motion.button>
-
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
@@ -631,6 +617,7 @@ export default function FeaturesPage() {
           </motion.div>
         </motion.div>
       </section>
+
       <Footer />
     </main>
   )
