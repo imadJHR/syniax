@@ -27,7 +27,7 @@ export default function Services() {
       y: 0,
       transition: { 
         duration: 0.8, 
-        ease: [0.25, 0.46, 0.45, 0.94],
+        ease: "easeOut" as const,
       },
     },
   }
@@ -35,7 +35,7 @@ export default function Services() {
   const cardHover = {
     y: -15,
     scale: 1.02,
-    transition: { type: "spring", stiffness: 300 }
+    transition: { type: "spring" as const, stiffness: 300 }
   }
 
   const imageVariants = {
@@ -43,7 +43,7 @@ export default function Services() {
     visible: {
       opacity: 1,
       x: 0,
-      transition: { duration: 1, ease: "easeOut" }
+      transition: { duration: 1, ease: "easeOut" as const }
     }
   }
 
@@ -51,8 +51,8 @@ export default function Services() {
     y: [0, -20, 0],
     transition: {
       duration: 6,
-      repeat: Number.POSITIVE_INFINITY,
-      ease: "easeInOut"
+      repeat: Infinity,
+      ease: "easeInOut" as const
     }
   }
 
@@ -199,8 +199,8 @@ export default function Services() {
           }}
           transition={{
             duration: 8,
-            repeat: Number.POSITIVE_INFINITY,
-            ease: "easeInOut"
+            repeat: Infinity,
+            ease: "easeInOut" as const
           }}
         />
         <motion.div
@@ -211,8 +211,8 @@ export default function Services() {
           }}
           transition={{
             duration: 6,
-            repeat: Number.POSITIVE_INFINITY,
-            ease: "easeInOut"
+            repeat: Infinity,
+            ease: "easeInOut" as const
           }}
         />
       </div>
@@ -363,7 +363,7 @@ export default function Services() {
                       {language === "fr" ? "En savoir plus" : "Learn more"}
                       <motion.span
                         animate={{ x: [0, 3, 0] }}
-                        transition={{ duration: 2, repeat: Number.POSITIVE_INFINITY }}
+                        transition={{ duration: 2, repeat: Infinity }}
                       >
                         <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
                       </motion.span>
@@ -414,7 +414,7 @@ export default function Services() {
             transition={{ delay: 0.6 }}
           >
             <motion.button
-              whileHover={{ scale: 1.05, boxShadow: "0 20px 40px rgba(255,255,255,0.2)" }}
+              whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               className="px-8 py-4 bg-white text-red-600 rounded-lg font-semibold flex items-center gap-2 transition-all duration-300"
             >
