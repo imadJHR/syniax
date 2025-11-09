@@ -34,7 +34,7 @@ export default function FeaturesPage() {
       y: 0,
       transition: {
         duration: 0.8,
-        ease: "easeInOut",
+        ease: "easeOut" as const,
       },
     },
   }
@@ -42,7 +42,7 @@ export default function FeaturesPage() {
   const cardHover = {
     y: -10,
     scale: 1.02,
-    transition: { type: "spring", stiffness: 300 },
+    transition: { type: "spring" as const, stiffness: 300 },
   }
 
   const floatingAnimation = {
@@ -50,7 +50,7 @@ export default function FeaturesPage() {
     transition: {
       duration: 6,
       repeat: Infinity,
-      ease: "easeInOut",
+      ease: "easeInOut" as const,
     },
   }
 
@@ -606,7 +606,7 @@ export default function FeaturesPage() {
             transition={{ delay: 0.6 }}
           >
             <motion.button
-              whileHover={{ scale: 1.05, boxShadow: "0 20px 40px rgba(239, 68, 68, 0.3)" }}
+              whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               className="px-8 py-4 bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white rounded-lg font-semibold transition-all duration-300 flex items-center gap-2"
             >
