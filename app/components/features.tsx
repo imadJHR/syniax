@@ -211,15 +211,19 @@ export default function Features() {
       y: 0,
       transition: { 
         duration: 0.8, 
-        ease: "easeOut" as const, // Fixed: Use string literal instead of array
+        ease: "easeOut",
       },
     },
   }
 
+  // Fixed cardHover with proper typing
   const cardHover = {
     y: -10,
     scale: 1.02,
-    transition: { type: "spring", stiffness: 300 }
+    transition: { 
+      type: "spring" as const, 
+      stiffness: 300 
+    }
   }
 
   const floatingAnimation = {
@@ -227,7 +231,7 @@ export default function Features() {
     transition: {
       duration: 4,
       repeat: Infinity,
-      ease: "easeInOut"
+      ease: "easeInOut" as const
     }
   }
 
@@ -236,7 +240,7 @@ export default function Features() {
     transition: {
       duration: 2,
       repeat: Infinity,
-      ease: "easeInOut"
+      ease: "easeInOut" as const
     }
   }
 
@@ -466,7 +470,7 @@ export default function Features() {
               transition={{ delay: 0.6 }}
             >
               <motion.button
-                whileHover={{ scale: 1.05, boxShadow: "0 20px 40px rgba(239, 68, 68, 0.3)" }}
+                whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 className="px-8 py-4 bg-red-600 hover:bg-red-700 text-white rounded-lg font-semibold transition-all duration-300 flex items-center gap-2"
               >
