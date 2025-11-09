@@ -333,7 +333,7 @@ export default function Features() {
               return (
                 <motion.div
                   key={i}
-                  variants={itemVariants}
+                
                   whileHover={{ scale: 1.05, y: -5 }}
                   className="text-center p-6 rounded-2xl bg-card/50 backdrop-blur-sm border border-border hover:border-red-500/30 transition-all duration-300"
                 >
@@ -364,7 +364,7 @@ export default function Features() {
             return (
               <motion.div
                 key={i}
-                variants={itemVariants}
+               
                 whileHover={cardHover}
                 className="group p-8 rounded-2xl bg-card/50 backdrop-blur-sm border border-border hover:border-red-500/50 hover:shadow-2xl hover:shadow-red-500/10 transition-all duration-500"
               >
