@@ -32,7 +32,7 @@ export default function EVChargingPage() {
       y: 0,
       transition: { 
         duration: 0.8, 
-        ease: [0.25, 0.46, 0.45, 0.94],
+        ease: [0.25, 0.46, 0.45, 0.94] as const,
       },
     },
   }
@@ -40,7 +40,7 @@ export default function EVChargingPage() {
   const cardHover = {
     y: -10,
     scale: 1.02,
-    transition: { type: "spring", stiffness: 300 }
+    transition: { type: "spring" as const, stiffness: 300 }
   }
 
   const floatingAnimation = {
@@ -48,7 +48,7 @@ export default function EVChargingPage() {
     transition: {
       duration: 6,
       repeat: Number.POSITIVE_INFINITY,
-      ease: "easeInOut"
+      ease: "easeInOut" as const
     }
   }
 
@@ -57,7 +57,7 @@ export default function EVChargingPage() {
     transition: {
       duration: 2,
       repeat: Number.POSITIVE_INFINITY,
-      ease: "easeInOut"
+      ease: "easeInOut" as const
     }
   }
 
@@ -329,7 +329,7 @@ export default function EVChargingPage() {
           >
             <motion.div
               whileHover={{ x: -5 }}
-              transition={{ type: "spring", stiffness: 400 }}
+              transition={{ type: "spring" as const, stiffness: 400 }}
             >
               <ArrowLeft size={20} />
             </motion.div>
@@ -431,7 +431,7 @@ export default function EVChargingPage() {
           <motion.div
             initial={{ opacity: 0, x: 50, scale: 0.9 }}
             animate={{ opacity: 1, x: 0, scale: 1 }}
-            transition={{ duration: 1, ease: "easeOut" }}
+            transition={{ duration: 1, ease: "easeOut" as const }}
             className="relative"
           >
             <div className="relative rounded-2xl overflow-hidden shadow-2xl">
@@ -477,7 +477,7 @@ export default function EVChargingPage() {
                         className="bg-green-500 h-3 rounded-full"
                         initial={{ width: 0 }}
                         animate={{ width: "82%" }}
-                        transition={{ duration: 2, ease: "easeOut" }}
+                        transition={{ duration: 2, ease: "easeOut" as const }}
                       />
                     </div>
                     <div className="text-white/60 text-xs mt-2">Temps restant: 15min</div>
@@ -516,6 +516,7 @@ export default function EVChargingPage() {
                     duration: 4,
                     repeat: Number.POSITIVE_INFINITY,
                     delay: 1,
+                    ease: "easeInOut" as const
                   }}
                 >
                   <Zap className="w-5 h-5 text-blue-400" />
