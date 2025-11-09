@@ -126,6 +126,7 @@ export default function Footer() {
 
   const t = translations[language]
 
+  // Fixed variants with proper TypeScript typing
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -144,22 +145,22 @@ export default function Footer() {
       y: 0,
       transition: {
         duration: 0.6,
-        ease: "easeOut",
+        ease: "easeOut" as const,
       },
     },
   }
 
   const hoverScale = {
     scale: 1.05,
-    transition: { type: "spring", stiffness: 400 }
+    transition: { type: "spring" as const, stiffness: 400 }
   }
 
   const floatingAnimation = {
     y: [0, -10, 0],
     transition: {
       duration: 4,
-      repeat: Number.POSITIVE_INFINITY,
-      ease: "easeInOut"
+      repeat: Infinity,
+      ease: "easeInOut" as const
     }
   }
 
@@ -220,7 +221,7 @@ export default function Footer() {
                 />
               </motion.div>
               <div>
-                <h3 className="text-2xl  text-red-600 font-bold text-foreground">{t.company}</h3>
+                <h3 className="text-2xl text-red-600 font-bold text-foreground">{t.company}</h3>
                 <p className="text-foreground/60 text-sm">{t.tagline}</p>
               </div>
             </motion.div>
@@ -290,7 +291,7 @@ export default function Footer() {
                   >
                     <motion.span
                       animate={{ x: [0, 3, 0] }}
-                      transition={{ duration: 2, repeat: Number.POSITIVE_INFINITY, delay: i * 0.5 }}
+                      transition={{ duration: 2, repeat: Infinity, delay: i * 0.5 }}
                     >
                       <ArrowRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" />
                     </motion.span>
@@ -313,7 +314,7 @@ export default function Footer() {
                   >
                     <motion.div
                       animate={{ scale: [1, 1.2, 1] }}
-                      transition={{ duration: 3, repeat: Number.POSITIVE_INFINITY, delay: i * 0.3 }}
+                      transition={{ duration: 3, repeat: Infinity, delay: i * 0.3 }}
                     >
                       <CheckCircle className="w-3 h-3 text-green-500 opacity-0 group-hover:opacity-100 transition-opacity" />
                     </motion.div>
@@ -416,7 +417,7 @@ export default function Footer() {
               <motion.button
                 type="submit"
                 className="w-full px-4 py-3 bg-red-600 hover:bg-red-700 text-white rounded-lg font-semibold text-sm transition-all duration-300 flex items-center justify-center gap-2"
-                whileHover={{ scale: 1.02, boxShadow: "0 10px 30px rgba(239, 68, 68, 0.3)" }}
+                whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
               >
                 {t.subscribe}
