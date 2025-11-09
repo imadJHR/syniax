@@ -590,8 +590,12 @@ export default function Hero() {
                 scale: { type: "spring", stiffness: 300 }
               }}
               initial={{ opacity: 0, y: 50, rotate: -5 }}
-              animate={{ opacity: 1, y: 0, rotate: 0 }}
-              transition={{ delay: 1.8, type: "spring", stiffness: 100 }}
+              animate={{ 
+                opacity: 1, 
+                y: 0, 
+                rotate: 0,
+                transition: { delay: 1.8, type: "spring", stiffness: 100 }
+              }}
             >
               <motion.div 
                 className="flex items-center gap-2 mb-2"
