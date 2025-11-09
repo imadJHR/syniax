@@ -26,7 +26,7 @@ export default function Hero() {
       y: 0,
       transition: { 
         duration: 0.8, 
-        ease: [0.25, 0.46, 0.45, 0.94],
+        ease: "easeOut" as const,
       },
     },
   }
@@ -39,7 +39,7 @@ export default function Hero() {
       scale: 1,
       transition: { 
         duration: 1.2, 
-        ease: [0.25, 0.46, 0.45, 0.94],
+        ease: "easeOut" as const,
       },
     },
   }
@@ -49,8 +49,8 @@ export default function Hero() {
     rotate: [0, 5, 0],
     transition: {
       duration: 6,
-      repeat: Number.POSITIVE_INFINITY,
-      ease: "easeInOut"
+      repeat: Infinity,
+      ease: "easeInOut" as const
     }
   }
 
@@ -63,8 +63,8 @@ export default function Hero() {
     ],
     transition: {
       duration: 3,
-      repeat: Number.POSITIVE_INFINITY,
-      ease: "easeInOut"
+      repeat: Infinity,
+      ease: "easeInOut" as const
     }
   }
 
@@ -73,7 +73,7 @@ export default function Hero() {
     visible: {
       opacity: 1,
       x: 0,
-      transition: { duration: 0.8, ease: "easeOut" }
+      transition: { duration: 0.8, ease: "easeOut" as const }
     }
   }
 
@@ -117,7 +117,7 @@ export default function Hero() {
           }}
           transition={{
             duration: Math.random() * 5 + 3,
-            repeat: Number.POSITIVE_INFINITY,
+            repeat: Infinity,
             delay: Math.random() * 2,
           }}
         />
@@ -198,8 +198,8 @@ export default function Hero() {
           }}
           transition={{
             duration: 8,
-            repeat: Number.POSITIVE_INFINITY,
-            ease: "easeInOut"
+            repeat: Infinity,
+            ease: "easeInOut" as const
           }}
         />
         <motion.div
@@ -210,8 +210,8 @@ export default function Hero() {
           }}
           transition={{
             duration: 6,
-            repeat: Number.POSITIVE_INFINITY,
-            ease: "easeInOut"
+            repeat: Infinity,
+            ease: "easeInOut" as const
           }}
         />
         <motion.div
@@ -222,8 +222,8 @@ export default function Hero() {
           }}
           transition={{
             duration: 10,
-            repeat: Number.POSITIVE_INFINITY,
-            ease: "easeInOut"
+            repeat: Infinity,
+            ease: "easeInOut" as const
           }}
         />
       </div>
@@ -247,7 +247,7 @@ export default function Hero() {
               >
                 <motion.div
                   animate={{ rotate: [0, 10, 0] }}
-                  transition={{ duration: 2, repeat: Number.POSITIVE_INFINITY }}
+                  transition={{ duration: 2, repeat: Infinity }}
                 >
                   <Shield className="w-4 h-4 text-red-500" />
                 </motion.div>
@@ -357,7 +357,6 @@ export default function Hero() {
               <motion.button
                 whileHover={{ 
                   scale: 1.05,
-                  boxShadow: "0 20px 40px rgba(239, 68, 68, 0.3)"
                 }}
                 whileTap={{ scale: 0.95 }}
                 className="group px-8 py-4 bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white rounded-lg font-semibold transition-all duration-300 flex items-center gap-2 relative overflow-hidden"
@@ -372,7 +371,7 @@ export default function Hero() {
                 <motion.span
                   className="group-hover:translate-x-1 transition-transform"
                   animate={{ x: [0, 5, 0] }}
-                  transition={{ duration: 2, repeat: Number.POSITIVE_INFINITY }}
+                  transition={{ duration: 2, repeat: Infinity }}
                 >
                   <ArrowRight className="w-5 h-5" />
                 </motion.span>
@@ -406,7 +405,7 @@ export default function Hero() {
                 {hero.learnMore}
                 <motion.span
                   animate={{ x: [0, 3, 0] }}
-                  transition={{ duration: 1.5, repeat: Number.POSITIVE_INFINITY }}
+                  transition={{ duration: 1.5, repeat: Infinity }}
                 >
                   →
                 </motion.span>
@@ -467,7 +466,7 @@ export default function Hero() {
                     <motion.div 
                       className="w-3 h-3 bg-red-500 rounded-full"
                       animate={{ scale: [1, 1.2, 1] }}
-                      transition={{ duration: 2, repeat: Number.POSITIVE_INFINITY }}
+                      transition={{ duration: 2, repeat: Infinity }}
                     />
                     <div className="w-3 h-3 bg-yellow-500 rounded-full"></div>
                     <div className="w-3 h-3 bg-green-500 rounded-full"></div>
@@ -488,7 +487,7 @@ export default function Hero() {
                           "0 0 0px rgba(239, 68, 68, 0)"
                         ]
                       }}
-                      transition={{ duration: 3, repeat: Number.POSITIVE_INFINITY }}
+                      transition={{ duration: 3, repeat: Infinity }}
                     >
                       <div className="text-white text-xs font-bold">ALERT</div>
                       <div className="text-white/60 text-xs">Threat Detected</div>
@@ -517,7 +516,7 @@ export default function Hero() {
                         className="bg-green-500 h-2 rounded-full"
                         initial={{ width: 0 }}
                         animate={{ width: "98%" }}
-                        transition={{ delay: 2, duration: 1.5, ease: "easeOut" }}
+                        transition={{ delay: 2, duration: 1.5, ease: "easeOut" as const }}
                       />
                     </div>
                   </motion.div>
@@ -540,7 +539,7 @@ export default function Hero() {
                           }}
                           transition={{ 
                             duration: 1.5 + i * 0.2,
-                            repeat: Number.POSITIVE_INFINITY,
+                            repeat: Infinity,
                             delay: i * 0.1
                           }}
                         />
@@ -556,7 +555,7 @@ export default function Hero() {
                 >
                   <motion.div
                     animate={{ rotate: [0, 360] }}
-                    transition={{ duration: 20, repeat: Number.POSITIVE_INFINITY, ease: "linear" }}
+                    transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
                   >
                     <Shield className="w-6 h-6 text-blue-400" />
                   </motion.div>
@@ -570,7 +569,7 @@ export default function Hero() {
                   }}
                   transition={{
                     duration: 4,
-                    repeat: Number.POSITIVE_INFINITY,
+                    repeat: Infinity,
                     delay: 1,
                   }}
                 >
@@ -587,7 +586,7 @@ export default function Hero() {
                 rotate: [-1, 1, -1],
               }}
               transition={{ 
-                rotate: { duration: 0.5, repeat: Number.POSITIVE_INFINITY },
+                rotate: { duration: 0.5, repeat: Infinity },
                 scale: { type: "spring", stiffness: 300 }
               }}
               initial={{ opacity: 0, y: 50, rotate: -5 }}
